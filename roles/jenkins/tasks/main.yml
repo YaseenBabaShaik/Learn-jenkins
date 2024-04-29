@@ -1,10 +1,4 @@
-# - name: Create Config file
-#   ansible.builtin.template:
-#    src: job.xml
-#    dest: /tmp/job.xml 
-
-  
-- name: Create a jenkins job 
+- name: Create folders
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/job.xml') }}"
     name: {{item}}
@@ -12,6 +6,9 @@
     user: admin
     password: "{{jenkins_password}}"
   loop:
-   -frontend
+   - CIpipelines
   
-  - name: Include Pipelines jobs
+- name: Include Pipelines jobs file
+  ansible.builtin.include_tasks: pipeline.yml
+  loop:
+   - {name: "frontend",dir: "CIpipelines"}
