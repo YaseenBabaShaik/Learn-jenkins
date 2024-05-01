@@ -7,6 +7,8 @@
     password: "{{jenkins_password}}"
   loop:
    - "CIpipelines"
+   vars:
+    Template: folder.xml
   
 - name: Include Pipelines jobs file
   ansible.builtin.include_tasks: pipeline.yml
