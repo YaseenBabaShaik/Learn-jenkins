@@ -26,7 +26,7 @@
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/s-job.xml') }}"
     name: "{{item.dir}}/{{item.name}}"
-    url: http://100.25.194.132:8080/
+    url: http://127.0.0.1:9090/
     user: admin
     password: "{{jenkins_password}}"
   when: out.rc == 3

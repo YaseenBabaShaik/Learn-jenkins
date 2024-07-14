@@ -8,3 +8,7 @@ pipeline_jobs:
 
 folders:
    - CIpipelines
+   - Infra
+
+sbranch_pipelines_Jobs:
+ - {name: "roboshop-infra",dir: "Infra"}
