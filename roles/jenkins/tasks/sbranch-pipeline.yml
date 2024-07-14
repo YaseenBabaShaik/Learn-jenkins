@@ -9,12 +9,12 @@
 #    name: "{{item.dir}}"
 #    url: http://54.162.95.77:8080/
 #    user: admin
-#    password: "{{jenkins_password}}"
+#    password: "{{jenkins_password}}" .
 
 - name: Check if job exists or not - {{item.dir}}/{{item.name}}
   ansible.builtin.shell: java -jar /opt/jenkins-cli.jar -auth admin:{{jenkins_password}} -s http://100.25.194.132:8080/ -webSocket get-job {{item.dir}}/{{item.name}}
   register: out
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Create Config file - {{item.dir}}/{{item.name}}
   ansible.builtin.template:
